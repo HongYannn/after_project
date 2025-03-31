@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+    <!-- filepath: c:\Users\schoo\Downloads\Atlas Free Website Template - Free-CSS.com\Atlas\index.html -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bootstrap Template Atlas</title>
     <meta name="description" content="Free bootstrap template Atlas">
     <link rel="icon" href="img/favicon.png" sizes="32x32" type="image/png">
-    <!-- custom.css -->
-    <link rel="stylesheet" href="css/custom.css">
-    <!-- bootstrap.min.css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- font-awesome -->
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    
-    <!-- AOS -->
-    <link rel="stylesheet" href="css/aos.css">
+
+    <!-- 關鍵 CSS 內嵌 -->
+    <style>
+        /* 關鍵樣式 (例如 AOS 的基本樣式) */
+        [data-aos] {
+            opacity: 0;
+            transition-property: opacity, transform;
+        }
+    </style>
+
+    <!-- 延遲載入非關鍵 CSS -->
+    <link rel="preload" href="css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/custom.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/aos.css">
+    </noscript>
 </head>
 
 <body>
@@ -227,10 +238,12 @@
     </div>
     
     <!-- AOS -->
-    <script src="js/aos.js"></script>
+    <script src="js/aos.js" defer></script>
     <script>
-      AOS.init({
-      });
+        // 初始化 AOS
+        document.addEventListener("DOMContentLoaded", function () {
+            AOS.init();
+        });
     </script>
 </body>
 
